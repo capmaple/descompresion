@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <title>Captain Maple — Descompresión (Lanzamiento Oficial 2026)</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&amp;family=Space+Grotesk:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+    /* Smooth transitions for player controls */
+    .track-item {
+      transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+    }
+    .track-item:hover {
+      transform: translateX(4px);
+    }
+    /* Dynamic wave pulsing when playing */
+    .audio-wave-bar {
+      transition: height 0.2s ease;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary-fixed": "#ffddb8",
+            "on-tertiary": "#3a2756",
+            "surface-container-high": "#262a35",
+            "on-tertiary-fixed-variant": "#513d6e",
+            "on-tertiary-fixed": "#24113f",
+            "on-background": "#dfe2f1",
+            "on-primary-fixed-variant": "#5516be",
+            "on-primary": "#3c0091",
+            "on-secondary": "#472a00",
+            "on-secondary-fixed": "#2a1700",
+            "primary": "#d0bcff",
+            "surface-tint": "#d0bcff",
+            "surface": "#0f131d",
+            "inverse-primary": "#6d3bd7",
+            "tertiary": "#d5bcf5",
+            "tertiary-container": "#9d87bd",
+            "primary-fixed-dim": "#d0bcff",
+            "secondary": "#ffb95f",
+            "secondary-container": "#ee9800",
+            "outline": "#958ea0",
+            "inverse-on-surface": "#2c303b",
+            "on-secondary-container": "#5b3800",
+            "on-surface-variant": "#cbc3d7",
+            "tertiary-fixed-dim": "#d5bcf5",
+            "on-error-container": "#ffdad6",
+            "surface-dim": "#0f131d",
+            "on-error": "#690005",
+            "surface-container-low": "#171b26",
+            "surface-container-lowest": "#0a0e18",
+            "surface-container": "#1c1f2a",
+            "surface-bright": "#353944",
+            "surface-container-highest": "#313540",
+            "inverse-surface": "#dfe2f1",
+            "error": "#ffb4ab",
+            "tertiary-fixed": "#eddcff",
+            "on-tertiary-container": "#33204e",
+            "outline-variant": "#494454",
+            "on-primary-container": "#340080",
+            "primary-container": "#a078ff",
+            "background": "#0f131d",
+            "surface-variant": "#313540",
+            "secondary-fixed-dim": "#ffb95f",
+            "on-secondary-fixed-variant": "#653e00",
+            "on-primary-fixed": "#23005c",
+            "error-container": "#93000a",
+            "primary-fixed": "#e9ddff",
+            "on-surface": "#dfe2f1"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "space-sm": "0.75rem",
+            "space-xs": "0.375rem",
+            "space-xl": "3.5rem",
+            "gutter-mobile": "1rem",
+            "gutter": "1.5rem",
+            "margin-mobile": "1.25rem",
+            "margin": "4rem",
+            "space-md": "1.25rem",
+            "space-lg": "2rem"
+          },
+          fontFamily: {
+            "headline-lg-mobile": ["Space Grotesk"],
+            "label-mono": ["Space Grotesk"],
+            "headline-xl": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "label-caps": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "headline-xl-mobile": ["Space Grotesk"],
+            "body-md": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "body-lg": ["Outfit"]
+          },
+          fontSize: {
+            "headline-lg-mobile": ["26px", { lineHeight: "34px", letterSpacing: "0.14em", fontWeight: "400" }],
+            "label-mono": ["12px", { lineHeight: "18px", letterSpacing: "0.08em", fontWeight: "400" }],
+            "headline-xl": ["56px", { lineHeight: "68px", letterSpacing: "0.22em", fontWeight: "300" }],
+            "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "0.12em", fontWeight: "400" }],
+            "label-caps": ["11px", { lineHeight: "16px", letterSpacing: "0.28em", fontWeight: "500" }],
+            "headline-lg": ["38px", { lineHeight: "48px", letterSpacing: "0.16em", fontWeight: "400" }],
+            "headline-xl-mobile": ["34px", { lineHeight: "42px", letterSpacing: "0.18em", fontWeight: "300" }],
+            "body-md": ["15px", { lineHeight: "24px", letterSpacing: "0.015em", fontWeight: "300" }],
+            "body-sm": ["13px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "400" }],
+            "body-lg": ["18px", { lineHeight: "28px", letterSpacing: "0.02em", fontWeight: "300" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-secondary/30 selection:text-secondary-fixed">
+  <!-- Top Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-surface-container-high/40">
+    <div class="h-20 w-full px-gutter-mobile lg:px-margin flex items-center justify-between gap-gutter">
+      <div class="flex items-center gap-space-sm shrink-0">
+        <div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_12px_rgba(245,158,11,0.7)] animate-pulse"></div>
+        <a class="font-label-caps text-label-caps uppercase text-on-surface tracking-[0.28em] hover:text-secondary transition-colors" data-path="portada" href="#hero">
+          CAPTAIN MAPLE <span class="text-outline-variant font-light mx-space-xs">/</span> DESCOMPRESIÓN
+        </a>
+      </div>
+      <nav class="hidden xl:flex items-center gap-space-xs p-1 rounded-full bg-surface-container-lowest/60 backdrop-blur-md border border-outline-variant/20" id="main-nav">
+        <a aria-current="page" class="px-space-md py-space-xs rounded-full font-label-caps text-label-caps uppercase transition-all bg-surface-container-high text-on-surface font-medium" data-path="portada" href="#hero" onclick="setActiveNav(this.getAttribute('href'))">Portada</a>
+        <a class="px-space-md py-space-xs rounded-full font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/50 transition-all" data-path="concepto" href="#concepto" onclick="setActiveNav(this.getAttribute('href'))">Concepto</a>
+        <a class="px-space-md py-space-xs rounded-full font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/50 transition-all" data-path="escuchar-album" href="#tracklist" onclick="setActiveNav(this.getAttribute('href'))">Escuchar Álbum</a>
+        <a class="px-space-md py-space-xs rounded-full font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/50 transition-all" data-path="cancionero-digital" href="#cancionero" onclick="setActiveNav(this.getAttribute('href'))">Cancionero Digital</a>
+        <a class="px-space-md py-space-xs rounded-full font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/50 transition-all" data-path="teaser" href="#teaser" onclick="setActiveNav(this.getAttribute('href'))">Teaser</a>
+      </nav>
+      <div class="flex items-center gap-space-md shrink-0">
+        <a class="hidden sm:inline-flex items-center justify-center px-space-md py-2.5 rounded-full bg-gradient-to-r from-secondary to-secondary-container text-on-secondary font-label-caps text-label-caps uppercase font-bold tracking-[0.2em] shadow-[0_0_24px_rgba(245,158,11,0.4)] hover:shadow-[0_0_35px_rgba(245,158,11,0.7)] transition-all" href="#tracklist">
+          Escuchar Ahora
+        </a>
+        <img alt="Profile - Captain Maple" class="w-8 h-8 rounded-full object-cover border border-secondary/40 shadow-sm" src="./Gemini_Generated_Image_3v27h33v27h33v27.jpg"/>
+      </div>
+    </div>
+  </header>
+
+  <main class="w-full pt-20 bg-surface min-h-screen relative">
+    <div class="flex flex-col w-full relative overflow-hidden bg-surface text-on-surface">
+      <!-- Ambient Cosmic Lighting Orbs -->
+      <div class="absolute top-10 left-1/4 w-[600px] h-[600px] bg-tertiary-container/10 rounded-full blur-[140px] pointer-events-none -z-0"></div>
+      <div class="absolute top-[35%] right-10 w-[500px] h-[500px] bg-secondary-container/10 rounded-full blur-[130px] pointer-events-none -z-0"></div>
+      <div class="absolute top-[75%] left-10 w-[650px] h-[650px] bg-primary/10 rounded-full blur-[160px] pointer-events-none -z-0"></div>
+
+      <!-- =========================================================================
+             1. HERO SECTION (#hero)
+             ========================================================================= -->
+      <section class="relative z-10 px-gutter-mobile lg:px-margin pt-6 pb-space-xl min-h-[calc(100vh-5rem)] flex flex-col justify-center" id="hero">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg lg:gap-margin items-center">
+          <!-- Typographic & Action Column -->
+          <div class="lg:col-span-7 flex flex-col items-start gap-space-md order-2 lg:order-1">
+            <div class="inline-flex items-center gap-space-xs px-3 py-1 rounded-full bg-surface-container-high/60 backdrop-blur-md border border-outline-variant/30">
+              <span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(255,185,95,0.8)]"></span>
+              <span class="font-label-caps text-label-caps uppercase text-secondary tracking-[0.24em]">CAPTAIN MAPLE PRESENTA</span>
+              <span class="font-label-mono text-label-mono text-outline-variant">/</span>
+              <span class="font-label-mono text-label-mono text-on-surface-variant">OPUS 01</span>
+            </div>
+            <div class="flex flex-col">
+              <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl uppercase text-on-surface tracking-[0.18em] leading-none">
+                DESCOMPRESIÓN
+              </h1>
+              <span class="font-label-mono text-label-mono uppercase tracking-[0.3em] text-secondary mt-2">
+                Del frío del vacío cósmico a la calidez de encontrar un hogar
+              </span>
+            </div>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl font-light leading-relaxed">
+              Siete canciones nacidas originalmente en guitarra acústica y voz que documentan el tránsito desde la búsqueda nocturna, el desvelo y las corazas emocionales hasta el instante de quitarse el casco, apagar los motores y celebrar la vida en el presente.
+            </p>
+            <!-- Genre Pill Capsules -->
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="px-3 py-1 rounded-full bg-surface-container-low border border-primary/20 font-label-caps text-label-caps uppercase tracking-wider text-primary">Alternative Space Rock</span>
+              <span class="px-3 py-1 rounded-full bg-surface-container-low border border-secondary/20 font-label-caps text-label-caps uppercase tracking-wider text-secondary">Cosmic Dance-Rock</span>
+              <span class="px-3 py-1 rounded-full bg-surface-container-low border border-tertiary/20 font-label-caps text-label-caps uppercase tracking-wider text-tertiary">Arena Power Ballad</span>
+              <span class="px-3 py-1 rounded-full bg-surface-container-low border border-secondary-fixed/20 font-label-caps text-label-caps uppercase tracking-wider text-secondary-fixed">Cosmic Roots Reggae</span>
+              <span class="px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant/30 font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant">Latin Space Fiesta</span>
+            </div>
+            <!-- Call to Actions -->
+            <div class="flex flex-wrap items-center gap-space-sm pt-4 w-full sm:w-auto">
+              <a class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-secondary to-secondary-container text-on-secondary font-label-caps text-label-caps uppercase font-bold tracking-[0.22em] shadow-[0_0_30px_rgba(255,185,95,0.4)] hover:shadow-[0_0_45px_rgba(255,185,95,0.7)] transition-all" href="#tracklist">
+                <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                <span>Escuchar Álbum</span>
+              </a>
+              <a class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-surface-container-high/70 backdrop-blur-md text-on-surface font-label-caps text-label-caps uppercase tracking-[0.22em] hover:bg-surface-bright transition-all" href="#cancionero">
+                <span class="material-symbols-outlined text-[18px]">menu_book</span>
+                <span>Ver Cancionero</span>
+              </a>
+              <a class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-caps text-label-caps uppercase tracking-[0.2em] hover:text-on-surface hover:bg-surface-container transition-all" href="#teaser">
+                <span class="material-symbols-outlined text-[18px]">videocam</span>
+                <span>Teaser Clip</span>
+              </a>
+            </div>
+            <!-- Album Metrics Bar -->
+            <div class="w-full max-w-xl grid grid-cols-2 sm:grid-cols-4 gap-3 pt-space-md mt-2">
+              <div class="p-3 rounded-lg bg-surface-container-low/70 border border-outline-variant/20 flex flex-col">
+                <span class="font-headline-md text-headline-md text-on-surface">07</span>
+                <span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Canciones</span>
+              </div>
+              <div class="p-3 rounded-lg bg-surface-container-low/70 border border-outline-variant/20 flex flex-col">
+                <span class="font-headline-md text-headline-md text-secondary">24:20</span>
+                <span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Minutos</span>
+              </div>
+              <div class="p-3 rounded-lg bg-surface-container-low/70 border border-outline-variant/20 flex flex-col">
+                <span class="font-headline-md text-headline-md text-primary">96k</span>
+                <span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Suno v6 Master</span>
+              </div>
+              <div class="p-3 rounded-lg bg-surface-container-low/70 border border-outline-variant/20 flex flex-col">
+                <span class="font-headline-md text-headline-md text-tertiary">3D</span>
+                <span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Inmersivo</span>
+              </div>
+            </div>
+          </div>
+          <!-- Album Cover Presentation Column -->
+          <div class="lg:col-span-5 flex justify-center items-center order-1 lg:order-2">
+            <div class="relative w-full max-w-[460px] aspect-square rounded-2xl p-2 bg-gradient-to-b from-secondary/20 via-surface-container to-primary/20 shadow-[0_0_50px_rgba(208,188,255,0.15)] group">
+              <div class="relative w-full h-full rounded-xl overflow-hidden bg-surface-container-lowest">
+                <img alt="Portada oficial del álbum Descompresión de Captain Maple mostrando un astronauta que dejó su casco ante una puerta brillante en una llanura cósmica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="./Gemini_Generated_Image_3v27h33v27h33v27.jpg"/>
+                <!-- Luminous subtle overlay reflections -->
+                <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-transparent"></div>
+                <div class="absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md shadow-lg border border-secondary/20">
+                  <span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                  <span class="font-label-caps text-label-caps uppercase text-on-surface tracking-widest">Lanzamiento Oficial 2026</span>
+                </div>
+                <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between p-3 rounded-xl bg-surface-container-high/80 backdrop-blur-md border border-outline-variant/30">
+                  <div class="flex flex-col">
+                    <span class="font-label-caps text-label-caps uppercase text-secondary">Edición Digital y Streaming</span>
+                    <span class="font-body-sm text-body-sm text-on-surface font-medium">Captain Maple • Suno v6 Master</span>
+                  </div>
+                  <button class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-[0_0_15px_rgba(255,185,95,0.6)] hover:scale-110 transition-transform" id="hero-play-btn" onclick="handleCoverPlay()" title="Reproducir Álbum">
+                    <span class="material-symbols-outlined text-[20px]" id="hero-play-icon" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+             2. CONCEPTO & BIOGRAFÍA (#concepto)
+             ========================================================================= -->
+      <section class="relative z-10 px-gutter-mobile lg:px-margin py-space-xl bg-surface-container-lowest/40" id="concepto">
+        <div class="max-w-6xl mx-auto flex flex-col gap-space-xl">
+          <!-- Section Header -->
+          <div class="flex flex-col items-center text-center gap-space-xs max-w-3xl mx-auto">
+            <span class="font-label-caps text-label-caps uppercase text-primary tracking-[0.3em]">NARRATIVA • TRASFONDO</span>
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase tracking-[0.16em] text-on-surface">
+              EL CONCEPTO // DESCOMPRESIÓN
+            </h2>
+            <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-secondary to-transparent mt-2"></div>
+          </div>
+
+          <!-- Central Blockquote -->
+          <div class="relative p-space-md sm:p-space-lg rounded-2xl bg-surface-container-low/90 backdrop-blur-xl shadow-xl border border-secondary/20 overflow-hidden text-center">
+            <div class="absolute -top-12 -left-12 w-40 h-40 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+            <p class="font-body-lg text-body-lg text-secondary-fixed max-w-4xl mx-auto italic font-light leading-relaxed">
+              “Cuando pasas demasiado tiempo flotando en el vacío exterior, no puedes volver a respirar aire normal de golpe: necesitas pasar por una cámara de descompresión para soltar las corazas, perder el miedo y entrar por fin a casa.”
+            </p>
+            <span class="font-label-caps text-label-caps uppercase tracking-[0.25em] text-outline block mt-space-xs">— Captain Maple, Bitácora de Composición.</span>
+          </div>
+
+          <!-- Main Biography & Genesis Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+            <div class="lg:col-span-6 flex flex-col gap-space-sm text-on-surface-variant font-body-md text-body-md">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary text-[20px]">explore</span>
+                <span class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface font-semibold">Génesis del Artista</span>
+              </div>
+              <p class="leading-relaxed">
+                Detrás de Captain Maple hay años de madrugadas con una guitarra en las manos, usando la inmensidad del espacio exterior como la única forma de explicar lo que pasaba por dentro. Gran parte de este disco se escribió flotando en esa incertidumbre: amores que te atrapan como la gravedad de un agujero negro, noches interminables después de las diez y la sensación de pedir auxilio en medio del silencio.
+              </p>
+              <p class="leading-relaxed">
+                Pero ningún viaje dura para siempre. 'Descompresión' es el puente entre aquel astronauta solitario y el hombre que hoy camina en tierra firme tras haber encontrado a su compañera de vida —su 'marciana'— y ese rincón del universo al que por fin puede llamar hogar.
+              </p>
+              <p class="leading-relaxed">
+                La portada captura exactamente ese segundo de liberación: el casco con el que te protegías del frío ya quedó tirado en el suelo, la puerta está abierta de par en par y la luz cálida de adentro te invita a pasar y respirar sin miedo.
+              </p>
+            </div>
+            <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+              <div class="p-5 rounded-xl bg-surface-container-high/60 backdrop-blur-md border border-outline-variant/20 flex flex-col gap-2">
+                <span class="font-label-mono text-label-mono text-secondary">01 / GRAVEDAD Y DERIVA</span>
+                <h3 class="font-headline-md text-headline-md text-on-surface">La Órbita Nocturna</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  El impulso del primer flechazo espacial ('Última Frontera'), el vértigo de caer atrapado sin escapatoria ('Tela de Araña') y la soledad de flotar en el silencio cósmico ('Memoria 2').
+                </p>
+              </div>
+              <div class="p-5 rounded-xl bg-surface-container-high/60 backdrop-blur-md border border-outline-variant/20 flex flex-col gap-2">
+                <span class="font-label-mono text-label-mono text-primary">02 / EL PUNTO DE QUIEBRE</span>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Quitarse la Coraza</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  La vulnerabilidad del último romántico que grita lo que siente ('Hola, ¿Qué Tal?') y decide respirar sin casco en medio de una explosión de luz ('Supernova').
+                </p>
+              </div>
+              <div class="sm:col-span-2 p-5 rounded-xl bg-surface-container-high/60 backdrop-blur-md border border-outline-variant/20 flex flex-col gap-2">
+                <span class="font-label-mono text-label-mono text-tertiary">03 / ATERRIZAJE Y CELEBRACIÓN</span>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Tierra Firme y Goce</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  Colgar el casco al lado de la puerta, encontrar hogar junto a su compañera ('Mi Marciana / Mi Extraterrestre') y celebrar bailando bajo la luna llena ('Ojalá no pare').
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 Conceptual Pillars Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+            <div class="p-space-md rounded-2xl bg-surface-container-high/40 backdrop-blur-lg border border-outline-variant/20 flex flex-col gap-space-sm shadow-lg group hover:bg-surface-container-high/70 transition-all duration-300">
+              <div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary group-hover:text-secondary group-hover:shadow-[0_0_20px_rgba(255,185,95,0.4)] transition-all">
+                <span class="material-symbols-outlined text-[28px]">sports_volleyball</span>
+              </div>
+              <span class="font-label-mono text-label-mono text-outline">PILAR I // EL CASCO CAÍDO</span>
+              <h4 class="font-headline-md text-headline-md text-on-surface">Fin del Aislamiento</h4>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                El casco abandonado junto al umbral representa las defensas emocionales y los miedos del pasado que ya no hacen falta cuando te sabes en un lugar seguro.
+              </p>
+            </div>
+            <div class="p-space-md rounded-2xl bg-surface-container-high/40 backdrop-blur-lg border border-outline-variant/20 flex flex-col gap-space-sm shadow-lg group hover:bg-surface-container-high/70 transition-all duration-300">
+              <div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-secondary group-hover:text-primary group-hover:shadow-[0_0_20px_rgba(208,188,255,0.4)] transition-all">
+                <span class="material-symbols-outlined text-[28px]">meeting_room</span>
+              </div>
+              <span class="font-label-mono text-label-mono text-outline">PILAR II // LA PUERTA ABIERTA</span>
+              <h4 class="font-headline-md text-headline-md text-on-surface">Refugio en el Presente</h4>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                El contraste entre la bruma violeta exterior y la luz ámbar que escapa de la puerta refleja el paso de las madrugadas de incertidumbre al calor de un hogar real.
+              </p>
+            </div>
+            <div class="p-space-md rounded-2xl bg-surface-container-high/40 backdrop-blur-lg border border-outline-variant/20 flex flex-col gap-space-sm shadow-lg group hover:bg-surface-container-high/70 transition-all duration-300">
+              <div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-tertiary group-hover:text-secondary group-hover:shadow-[0_0_20px_rgba(255,185,95,0.4)] transition-all">
+                <span class="material-symbols-outlined text-[28px]">graphic_eq</span>
+              </div>
+              <span class="font-label-mono text-label-mono text-outline">PILAR III // IDENTIDAD SONORA</span>
+              <h4 class="font-headline-md text-headline-md text-on-surface">Guitarra Orgánica + IA</h4>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Cada canción conserva el alma acústica, los acordes, los cortes rítmicos y el timbre vocal original de Captain Maple, expandidos hacia una producción de banda completa mediante Suno v6.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+             3. REPRODUCTOR INTERACTIVO Y TRACKLIST (#tracklist)
+             ========================================================================= -->
+      <section class="relative z-10 px-gutter-mobile lg:px-margin py-space-xl" id="tracklist">
+        <!-- Motor de Audio HTML5 Real -->
+        <audio id="real-audio-player" preload="metadata"></audio>
+
+        <div class="max-w-6xl mx-auto flex flex-col gap-space-lg">
+          <!-- Header -->
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <span class="font-label-caps text-label-caps uppercase text-secondary tracking-[0.25em]">STREAMING • DISCOGRAFÍA OFICIAL</span>
+              <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase tracking-[0.16em] text-on-surface mt-1">
+                ESCÚCHALO AHORA
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">Siete capítulos secuenciados para escucha continua. Conexión de audio de alta fidelidad.</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-ping"></span>
+              <span class="font-label-mono text-label-mono text-secondary uppercase tracking-widest">MOTOR DE AUDIO ACTIVO</span>
+            </div>
+          </div>
+
+          <!-- Multimedia Cosmic Streaming Console -->
+          <div class="w-full rounded-2xl bg-surface-container-low/90 backdrop-blur-2xl p-space-md sm:p-space-lg shadow-2xl border border-outline-variant/20 flex flex-col gap-space-md">
+            <!-- Now Playing Header Banner -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-space-md p-space-sm rounded-xl bg-surface-container-high/60 border border-outline-variant/20">
+              <div class="flex items-center gap-space-sm w-full md:w-auto">
+                <div class="w-16 h-16 rounded-lg overflow-hidden shrink-0 shadow-md border border-secondary/30">
+                  <img alt="Miniatura Descompresión" class="w-full h-full object-cover" src="./Gemini_Generated_Image_3v27h33v27h33v27.jpg"/>
+                </div>
+                <div class="flex flex-col min-w-0">
+                  <div class="flex items-center gap-2">
+                    <span class="font-label-mono text-label-mono text-secondary font-medium" id="player-track-index">PISTA 01 DE 07</span>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-label-caps uppercase bg-primary/20 text-primary" id="player-badge">REPRODUCIENDO</span>
+                  </div>
+                  <h3 class="font-headline-md text-headline-md text-on-surface truncate" id="player-track-title">Última Frontera</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant truncate" id="player-track-genre">Cosmic Dance-Rock • El despegue</p>
+                </div>
+              </div>
+              <!-- Controls Bar -->
+              <div class="flex items-center gap-space-sm shrink-0">
+                <button class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-bright flex items-center justify-center text-on-surface transition-colors" onclick="prevTrack()" title="Pista anterior">
+                  <span class="material-symbols-outlined text-[20px]">skip_previous</span>
+                </button>
+                <button class="w-14 h-14 rounded-full bg-gradient-to-tr from-secondary to-secondary-container text-on-secondary flex items-center justify-center shadow-[0_0_25px_rgba(255,185,95,0.6)] hover:scale-105 transition-all" id="main-play-btn" onclick="togglePlayState()" title="Reproducir/Pausar">
+                  <span class="material-symbols-outlined text-[30px]" id="main-play-icon" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                </button>
+                <button class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-bright flex items-center justify-center text-on-surface transition-colors" onclick="nextTrack()" title="Siguiente pista">
+                  <span class="material-symbols-outlined text-[20px]">skip_next</span>
+                </button>
+                <button class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-bright flex items-center justify-center text-on-surface-variant transition-colors" id="repeat-btn" onclick="toggleRepeat()" title="Repetición cósmica">
+                  <span class="material-symbols-outlined text-[20px]">repeat</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Waveform Simulation & Scrubber Progress -->
+            <div class="flex flex-col gap-2">
+              <!-- Animated Audio Waveform Visualizer -->
+              <div class="w-full h-14 bg-surface-container-lowest/80 rounded-xl px-4 py-2 flex items-center justify-between gap-1 overflow-hidden" id="waveform-container">
+                <div class="audio-wave-bar w-1.5 h-3 bg-primary/40 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-6 bg-primary/60 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-10 bg-secondary rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-8 bg-secondary/80 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-5 bg-primary/50 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-7 bg-primary/70 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-12 bg-secondary rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-9 bg-secondary/90 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-4 bg-primary/40 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-8 bg-primary/60 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-11 bg-secondary rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-6 bg-secondary/80 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-4 bg-primary/40 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-9 bg-primary/70 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-12 bg-secondary rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-10 bg-secondary/90 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-5 bg-primary/50 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-8 bg-primary/70 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-11 bg-secondary rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-7 bg-secondary/80 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-3 bg-primary/40 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-10 bg-primary/60 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-12 bg-secondary rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-8 bg-secondary/90 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-5 bg-primary/50 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-7 bg-primary/70 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-11 bg-secondary rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-9 bg-secondary/80 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-4 bg-primary/40 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-6 bg-primary/60 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-10 bg-secondary rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-7 bg-secondary/80 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-4 bg-primary/40 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-8 bg-primary/60 rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-11 bg-secondary rounded-full animate-pulse"></div>
+                <div class="audio-wave-bar w-1.5 h-5 bg-primary/50 rounded-full animate-pulse"></div>
+              </div>
+              <!-- Scrub Bar -->
+              <div class="flex items-center gap-3 w-full pt-1">
+                <span class="font-label-mono text-label-mono text-outline shrink-0 w-12 text-left" id="player-time-current">00:00</span>
+                <div class="relative w-full h-2 rounded-full bg-surface-container-highest cursor-pointer group" id="player-progress-bar" onclick="simulateSeek(event)">
+                  <div class="absolute top-0 left-0 h-full rounded-full bg-gradient-to-r from-primary to-secondary" id="player-progress" style="width: 0%;"></div>
+                  <div class="absolute top-1/2 -mt-2 -ml-2 w-4 h-4 rounded-full bg-secondary shadow-[0_0_12px_#ffb95f] group-hover:scale-125 transition-transform" id="player-thumb" style="left: 0%;"></div>
+                </div>
+                <span class="font-label-mono text-label-mono text-outline shrink-0 w-12 text-right" id="player-time-total">02:35</span>
+              </div>
+            </div>
+
+            <!-- Tracklist items list -->
+            <div class="flex flex-col gap-1 divide-y divide-transparent mt-2">
+              <!-- Track 01 -->
+              <div class="track-item group p-3 sm:p-4 rounded-xl bg-surface-container-high/80 border border-secondary/30 flex items-center justify-between gap-3 hover:bg-surface-container-high/80 transition-all cursor-pointer" id="track-row-0" onclick="playTrack(0)">
+                <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+                  <span class="track-index font-label-mono text-label-mono text-secondary font-bold w-6 text-center">01</span>
+                  <div class="flex flex-col min-w-0">
+                    <span class="font-headline-md text-headline-md text-on-surface truncate">Última Frontera</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Cosmic Dance-Rock • El despegue</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+                  <span class="font-label-mono text-label-mono text-outline">02:35</span>
+                  <button class="px-2.5 py-1 rounded bg-surface-container text-primary font-label-caps text-label-caps uppercase hover:bg-surface-bright transition-colors" onclick="event.stopPropagation(); showLyricsForTrack(0)">
+                    Letra
+                  </button>
+                  <div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center transition-all track-play-pill">
+                    <span class="material-symbols-outlined text-[18px] track-play-icon" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 02 -->
+              <div class="track-item group p-3 sm:p-4 rounded-xl bg-surface-container-high/20 flex items-center justify-between gap-3 hover:bg-surface-container-high/80 transition-all cursor-pointer" id="track-row-1" onclick="playTrack(1)">
+                <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+                  <span class="track-index font-label-mono text-label-mono text-outline w-6 text-center">02</span>
+                  <div class="flex flex-col min-w-0">
+                    <span class="font-headline-md text-headline-md text-on-surface truncate">Tela de Araña</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Dark Space Rock • Gravedad nocturna</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+                  <span class="font-label-mono text-label-mono text-outline">03:18</span>
+                  <button class="px-2.5 py-1 rounded bg-surface-container text-primary font-label-caps text-label-caps uppercase hover:bg-surface-bright transition-colors" onclick="event.stopPropagation(); showLyricsForTrack(1)">
+                    Letra
+                  </button>
+                  <div class="w-8 h-8 rounded-full bg-surface-container group-hover:bg-secondary text-on-surface group-hover:text-on-secondary flex items-center justify-center transition-all track-play-pill">
+                    <span class="material-symbols-outlined text-[18px] track-play-icon">play_arrow</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 03 -->
+              <div class="track-item group p-3 sm:p-4 rounded-xl bg-surface-container-high/20 flex items-center justify-between gap-3 hover:bg-surface-container-high/80 transition-all cursor-pointer" id="track-row-2" onclick="playTrack(2)">
+                <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+                  <span class="track-index font-label-mono text-label-mono text-outline w-6 text-center">03</span>
+                  <div class="flex flex-col min-w-0">
+                    <span class="font-headline-md text-headline-md text-on-surface truncate">Hola, ¿Qué Tal?</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Cosmic Rock Ballad • A corazón abierto</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+                  <span class="font-label-mono text-label-mono text-outline">03:53</span>
+                  <button class="px-2.5 py-1 rounded bg-surface-container text-primary font-label-caps text-label-caps uppercase hover:bg-surface-bright transition-colors" onclick="event.stopPropagation(); showLyricsForTrack(2)">
+                    Letra
+                  </button>
+                  <div class="w-8 h-8 rounded-full bg-surface-container group-hover:bg-secondary text-on-surface group-hover:text-on-secondary flex items-center justify-center transition-all track-play-pill">
+                    <span class="material-symbols-outlined text-[18px] track-play-icon">play_arrow</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 04 -->
+              <div class="track-item group p-3 sm:p-4 rounded-xl bg-surface-container-high/20 flex items-center justify-between gap-3 hover:bg-surface-container-high/80 transition-all cursor-pointer" id="track-row-3" onclick="playTrack(3)">
+                <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+                  <span class="track-index font-label-mono text-label-mono text-outline w-6 text-center">04</span>
+                  <div class="flex flex-col min-w-0">
+                    <span class="font-headline-md text-headline-md text-on-surface truncate">Memoria 2</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Melancholic Space Rock • La deriva en el vacío</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+                  <span class="font-label-mono text-label-mono text-outline">04:14</span>
+                  <button class="px-2.5 py-1 rounded bg-surface-container text-primary font-label-caps text-label-caps uppercase hover:bg-surface-bright transition-colors" onclick="event.stopPropagation(); showLyricsForTrack(3)">
+                    Letra
+                  </button>
+                  <div class="w-8 h-8 rounded-full bg-surface-container group-hover:bg-secondary text-on-surface group-hover:text-on-secondary flex items-center justify-center transition-all track-play-pill">
+                    <span class="material-symbols-outlined text-[18px] track-play-icon">play_arrow</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 05 -->
+              <div class="track-item group p-3 sm:p-4 rounded-xl bg-surface-container-high/20 flex items-center justify-between gap-3 hover:bg-surface-container-high/80 transition-all cursor-pointer" id="track-row-4" onclick="playTrack(4)">
+                <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+                  <span class="track-index font-label-mono text-label-mono text-outline w-6 text-center">05</span>
+                  <div class="flex flex-col min-w-0">
+                    <span class="font-headline-md text-headline-md text-on-surface truncate">Supernova</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Explosive Space Rock • Sin casco en tu órbita</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+                  <span class="font-label-mono text-label-mono text-outline">03:45</span>
+                  <button class="px-2.5 py-1 rounded bg-surface-container text-primary font-label-caps text-label-caps uppercase hover:bg-surface-bright transition-colors" onclick="event.stopPropagation(); showLyricsForTrack(4)">
+                    Letra
+                  </button>
+                  <div class="w-8 h-8 rounded-full bg-surface-container group-hover:bg-secondary text-on-surface group-hover:text-on-secondary flex items-center justify-center transition-all track-play-pill">
+                    <span class="material-symbols-outlined text-[18px] track-play-icon">play_arrow</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 06 -->
+              <div class="track-item group p-3 sm:p-4 rounded-xl bg-surface-container-high/20 flex items-center justify-between gap-3 hover:bg-surface-container-high/80 transition-all cursor-pointer" id="track-row-5" onclick="playTrack(5)">
+                <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+                  <span class="track-index font-label-mono text-label-mono text-outline w-6 text-center">06</span>
+                  <div class="flex flex-col min-w-0">
+                    <span class="font-headline-md text-headline-md text-on-surface truncate">Mi Marciana</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Cosmic Roots Reggae • El aterrizaje en casa</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+                  <span class="font-label-mono text-label-mono text-outline">04:05</span>
+                  <button class="px-2.5 py-1 rounded bg-surface-container text-primary font-label-caps text-label-caps uppercase hover:bg-surface-bright transition-colors" onclick="event.stopPropagation(); showLyricsForTrack(5)">
+                    Letra
+                  </button>
+                  <div class="w-8 h-8 rounded-full bg-surface-container group-hover:bg-secondary text-on-surface group-hover:text-on-secondary flex items-center justify-center transition-all track-play-pill">
+                    <span class="material-symbols-outlined text-[18px] track-play-icon">play_arrow</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 07 -->
+              <div class="track-item group p-3 sm:p-4 rounded-xl bg-surface-container-high/20 flex items-center justify-between gap-3 hover:bg-surface-container-high/80 transition-all cursor-pointer" id="track-row-6" onclick="playTrack(6)">
+                <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+                  <span class="track-index font-label-mono text-label-mono text-outline w-6 text-center">07</span>
+                  <div class="flex flex-col min-w-0">
+                    <span class="font-headline-md text-headline-md text-on-surface truncate">Ojalá no pare</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Latin Space Fiesta • Noche de luna llena</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+                  <span class="font-label-mono text-label-mono text-outline">02:30</span>
+                  <button class="px-2.5 py-1 rounded bg-surface-container text-primary font-label-caps text-label-caps uppercase hover:bg-surface-bright transition-colors" onclick="event.stopPropagation(); showLyricsForTrack(6)">
+                    Letra
+                  </button>
+                  <div class="w-8 h-8 rounded-full bg-surface-container group-hover:bg-secondary text-on-surface group-hover:text-on-secondary flex items-center justify-center transition-all track-play-pill">
+                    <span class="material-symbols-outlined text-[18px] track-play-icon">play_arrow</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+             4. CANCIONERO DIGITAL (BOOKLET OFICIAL) (#cancionero)
+             ========================================================================= -->
+      <section class="relative z-10 px-gutter-mobile lg:px-margin py-space-xl bg-surface-container-lowest/50" id="cancionero">
+        <div class="max-w-6xl mx-auto flex flex-col gap-space-lg">
+          <!-- Section Header -->
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <span class="font-label-caps text-label-caps uppercase text-primary tracking-[0.28em]">LITERATURA • LINER NOTES</span>
+              <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase tracking-[0.16em] text-on-surface mt-1">
+                CANCIONERO DIGITAL // BOOKLET OFICIAL
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">Textos integrales, notas de composición y desglose de estrofas.</p>
+            </div>
+            <!-- Download Booklet PDF CTA -->
+            <a class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-caps text-label-caps uppercase tracking-wider transition-all shadow-md shrink-0 border border-outline-variant/30 cursor-pointer" download="Cancionero_Descompresion_Deluxe.pdf" href="./Cancionero_Descompresion_Deluxe.pdf">
+              <span class="material-symbols-outlined text-[20px] text-secondary">file_download</span>
+              <span>Descargar Booklet PDF (Deluxe)</span>
+            </a>
+          </div>
+
+          <!-- Horizontal Tabs Navigation -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="cancionero-tabs">
+            <button class="tab-btn px-4 py-2 rounded-full font-label-caps text-label-caps uppercase tracking-widest transition-all shrink-0 bg-secondary text-on-secondary font-bold shadow-[0_0_15px_rgba(255,185,95,0.4)]" onclick="switchTab(0)">
+              1. Última Frontera
+            </button>
+            <button class="tab-btn px-4 py-2 rounded-full font-label-caps text-label-caps uppercase tracking-widest transition-all shrink-0 bg-surface-container text-on-surface-variant hover:text-on-surface" onclick="switchTab(1)">
+              2. Tela de Araña
+            </button>
+            <button class="tab-btn px-4 py-2 rounded-full font-label-caps text-label-caps uppercase tracking-widest transition-all shrink-0 bg-surface-container text-on-surface-variant hover:text-on-surface" onclick="switchTab(2)">
+              3. Hola, ¿Qué Tal?
+            </button>
+            <button class="tab-btn px-4 py-2 rounded-full font-label-caps text-label-caps uppercase tracking-widest transition-all shrink-0 bg-surface-container text-on-surface-variant hover:text-on-surface" onclick="switchTab(3)">
+              4. Memoria 2
+            </button>
+            <button class="tab-btn px-4 py-2 rounded-full font-label-caps text-label-caps uppercase tracking-widest transition-all shrink-0 bg-surface-container text-on-surface-variant hover:text-on-surface" onclick="switchTab(4)">
+              5. Supernova
+            </button>
+            <button class="tab-btn px-4 py-2 rounded-full font-label-caps text-label-caps uppercase tracking-widest transition-all shrink-0 bg-surface-container text-on-surface-variant hover:text-on-surface" onclick="switchTab(5)">
+              6. Mi Marciana
+            </button>
+            <button class="tab-btn px-4 py-2 rounded-full font-label-caps text-label-caps uppercase tracking-widest transition-all shrink-0 bg-surface-container text-on-surface-variant hover:text-on-surface" onclick="switchTab(6)">
+              7. Ojalá no pare
+            </button>
+          </div>
+
+          <!-- Lyrics Display Container (Glassmorphic Book Layout) -->
+          <div class="w-full rounded-2xl bg-surface-container-low/95 backdrop-blur-2xl p-space-md sm:p-space-lg shadow-2xl border border-outline-variant/20 relative overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+              <!-- Left: Lyrics Formatted Sheet -->
+              <div class="lg:col-span-7 flex flex-col gap-space-md">
+                <div>
+                  <span class="font-label-mono text-label-mono text-secondary" id="sheet-track-tag">TRACK 01 // CAPTAIN MAPLE</span>
+                  <h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-on-surface tracking-wider" id="sheet-track-title">Última Frontera</h3>
+                  <p class="font-label-caps text-label-caps uppercase text-outline tracking-widest" id="sheet-track-subtitle">Capítulo I • La chispa que enciende los motores</p>
+                </div>
+                <!-- Lyric Lines Box -->
+                <div class="flex flex-col gap-4 font-body-lg text-body-lg text-on-surface font-light leading-relaxed whitespace-pre-line bg-surface-container-lowest/60 p-space-md rounded-xl border border-outline-variant/20" id="sheet-lyrics-content">
+                </div>
+              </div>
+
+              <!-- Right: Curatorial Notes & Technical Specs -->
+              <div class="lg:col-span-5 flex flex-col gap-space-md">
+                <!-- Liner Notes Card -->
+                <div class="p-space-md rounded-xl bg-surface-container-high/50 border border-outline-variant/20 flex flex-col gap-space-xs">
+                  <div class="flex items-center gap-2 text-secondary">
+                    <span class="material-symbols-outlined text-[20px]">stylus_note</span>
+                    <span class="font-label-caps text-label-caps uppercase tracking-wider font-semibold">Notas del Autor // Significado</span>
+                  </div>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed" id="sheet-notes-content">
+                  </p>
+                </div>
+
+                <!-- Production & AI Tech Spec Sheet -->
+                <div class="p-space-md rounded-xl bg-surface-container-high/50 border border-outline-variant/20 flex flex-col gap-space-xs">
+                  <div class="flex items-center gap-2 text-primary">
+                    <span class="material-symbols-outlined text-[20px]">memory</span>
+                    <span class="font-label-caps text-label-caps uppercase tracking-wider font-semibold">Ficha Técnica &amp; Co-creación</span>
+                  </div>
+                  <div class="flex flex-col font-label-mono text-label-mono text-on-surface-variant pt-2">
+                    <div class="grid grid-cols-12 items-baseline gap-2 py-2 border-b border-surface-container-highest/40">
+                      <span class="col-span-5 text-outline text-left">Composición y Guitarra:</span>
+                      <span class="col-span-7 text-right font-medium text-on-surface">Captain Maple</span>
+                    </div>
+                    <div class="grid grid-cols-12 items-baseline gap-2 py-2 border-b border-surface-container-highest/40">
+                      <span class="col-span-5 text-outline text-left">Lírica Original:</span>
+                      <span class="col-span-7 text-right font-medium text-secondary" id="sheet-lyric-author">Captain Maple</span>
+                    </div>
+                    <div class="grid grid-cols-12 items-baseline gap-2 py-2 border-b border-surface-container-highest/40">
+                      <span class="col-span-5 text-outline text-left">Producción Musical IA:</span>
+                      <span class="col-span-7 text-right font-medium text-on-surface">Suno v6 (Cover + Voz Propia)</span>
+                    </div>
+                    <div class="grid grid-cols-12 items-baseline gap-2 py-2 border-b border-surface-container-highest/40">
+                      <span class="col-span-5 text-outline text-left">Prompt Producción Musical:</span>
+                      <span class="col-span-7 text-right font-medium text-on-surface">Gemini</span>
+                    </div>
+                    <div class="grid grid-cols-12 items-baseline gap-2 py-2 border-b border-surface-container-highest/40">
+                      <span class="col-span-5 text-outline text-left">Dirección de Arte y Portada:</span>
+                      <span class="col-span-7 text-right font-medium text-primary">Gemini Image Generation</span>
+                    </div>
+                    <div class="grid grid-cols-12 items-baseline gap-2 py-2">
+                      <span class="col-span-5 text-outline text-left">Cinematografía Teaser:</span>
+                      <span class="col-span-7 text-right font-medium text-on-surface-variant">Pixverse AI (En producción)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Listening Tip Box -->
+                <div class="p-space-md rounded-xl bg-surface-container-lowest border border-outline-variant/20 flex items-center gap-3">
+                  <span class="material-symbols-outlined text-secondary text-[24px]">headphones</span>
+                  <p class="font-body-sm text-body-sm text-outline-variant">
+                    Se recomienda escucha con auriculares de rango dinámico completo para percibir la separación de capas analógicas y síntesis generativa Suno v6.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+             5. VIDEOCLIP OFICIAL (#teaser)
+             ========================================================================= -->
+      <section class="relative z-10 px-gutter-mobile lg:px-margin py-space-xl" id="teaser">
+        <div class="max-w-6xl mx-auto flex flex-col gap-space-lg">
+          <!-- Section Header -->
+          <div class="flex flex-col items-center text-center gap-space-xs max-w-2xl mx-auto">
+            <span class="font-label-caps text-label-caps uppercase text-secondary tracking-[0.25em]">CINEMÁTICA VISUAL</span>
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase tracking-[0.16em] text-on-surface">
+              VIDEO CLIP OJALA NO PARE
+            </h2>
+          </div>
+
+          <!-- Widescreen Video Frame Container -->
+          <div class="w-full max-w-4xl mx-auto aspect-video rounded-2xl bg-surface-container-lowest relative overflow-hidden shadow-[0_0_60px_rgba(208,188,255,0.15)] border border-secondary/20">
+            <iframe class="w-full h-full rounded-2xl" src="https://www.youtube.com/embed/BtyDNa3sP5c?rel=0&enablejsapi=1" title="Captain Maple - Ojalá no pare (Video Oficial)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+
+          <!-- YouTube Direct Link & Info Bar -->
+          <div class="w-full max-w-4xl mx-auto flex items-center justify-between flex-wrap gap-4 pt-1">
+            <div class="flex items-center gap-2 text-outline">
+              <span class="material-symbols-outlined text-[20px] text-secondary">movie</span>
+              <span class="font-label-mono text-label-mono uppercase tracking-wider text-on-surface-variant">Clip Oficial // Pixverse AI • Captain Maple</span>
+            </div>
+            <a class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-surface-container-high hover:bg-surface-bright text-secondary hover:text-secondary-fixed border border-secondary/40 font-label-caps text-label-caps uppercase tracking-wider font-semibold transition-all shadow-md group hover:shadow-[0_0_20px_rgba(245,158,11,0.3)]" href="https://www.youtube.com/watch?v=BtyDNa3sP5c" target="_blank" rel="noopener noreferrer">
+              <span class="material-symbols-outlined text-[20px] text-red-500 group-hover:scale-110 transition-transform">smart_display</span>
+              <span>Ver en YouTube</span>
+              <span class="material-symbols-outlined text-[16px] text-outline">open_in_new</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+             6. NEWSLETTER & ÉTICA ARTÍSTICA
+             ========================================================================= -->
+      <section class="relative z-10 px-gutter-mobile lg:px-margin py-space-xl bg-surface-container-lowest">
+        <div class="max-w-6xl mx-auto flex flex-col gap-space-xl">
+          <!-- Newsletter Subscription Card -->
+          <div class="p-space-md sm:p-space-lg rounded-2xl bg-gradient-to-br from-surface-container-low to-surface-container border border-outline-variant/20 flex flex-col lg:flex-row items-center justify-between gap-space-lg shadow-xl">
+            <div class="flex flex-col gap-2 max-w-lg">
+              <span class="font-label-caps text-label-caps uppercase text-secondary tracking-[0.25em]">BITÁCORA DE TRANSMISIONES</span>
+              <h3 class="font-headline-md text-headline-md text-on-surface">Suscríbete al Cuaderno de Vuelo</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">
+                Recibe adelantos de remixes inéditos, archivos stems de producción para remixers independientes y reflexiones directas de Captain Maple.
+              </p>
+            </div>
+            <form class="w-full lg:w-auto flex flex-col sm:flex-row gap-2 max-w-md" onsubmit="handleNewsletterSubmit(event)">
+              <input class="px-4 py-3 rounded-full bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-secondary border border-outline-variant/30 min-w-[260px]" id="newsletter-email" placeholder="frecuencia@cosmos.fm" required="" type="email"/>
+              <button class="px-6 py-3 rounded-full bg-gradient-to-r from-secondary to-secondary-container text-on-secondary font-label-caps text-label-caps uppercase font-bold tracking-widest hover:shadow-[0_0_20px_rgba(255,185,95,0.5)] transition-all" type="submit">
+                Conectar
+              </button>
+            </form>
+          </div>
+
+          <!-- Declaración Ética & Contactos -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-space-lg">
+            <!-- Recuadro Formal: Declaración Ética de Creación con IA -->
+            <div class="md:col-span-8 p-space-md rounded-xl bg-surface-container-high/40 border border-outline-variant/20 flex flex-col gap-space-xs">
+              <div class="flex items-center gap-2 text-primary">
+                <span class="material-symbols-outlined text-[20px]">verified_user</span>
+                <span class="font-label-caps text-label-caps uppercase tracking-wider font-semibold">Declaración Ética de Creación con IA</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Descompresión nace de la premisa de que la tecnología expande el universo del músico, pero la sensibilidad humana es irremplazable. Las canciones de este álbum parten de composiciones reales en guitarra y voz creadas por Captain Maple, utilizando Gemini para traducir su visión artística en prompts de producción musical e imagen, Suno v6 para vestir sus melodías y su propia voz con arreglos de banda completa, y Pixverse AI para la atmósfera audiovisual.
+              </p>
+            </div>
+            <!-- Electronic Press Kit & Redes -->
+            <div class="md:col-span-4 flex flex-col justify-between gap-4 p-space-md rounded-xl bg-surface-container-high/40 border border-outline-variant/20">
+              <div class="flex flex-col gap-1">
+                <span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider">Prensa &amp; Booking</span>
+                <a class="font-body-sm text-body-sm text-on-surface hover:text-secondary transition-colors underline" download="EPK_Oficial_Captain_Maple.pdf" href="./EPK_Oficial_Captain_Maple.pdf">Descargar EPK Oficial (Kit de Medios)</a>
+                <span class="font-label-mono text-label-mono text-outline">contacto@captainmaple.com</span>
+              </div>
+              <div class="flex flex-col gap-1 pt-2">
+                <span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Canales de Streaming</span>
+                <div class="flex items-center gap-3 pt-1">
+                  <a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-surface-bright transition-all" href="#" title="Spotify">
+                    <span class="material-symbols-outlined text-[18px]">podcasts</span>
+                  </a>
+                  <a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-surface-bright transition-all" href="#" title="Apple Music">
+                    <span class="material-symbols-outlined text-[18px]">music_note</span>
+                  </a>
+                  <a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-surface-bright transition-all" href="https://suno.com" title="Suno AI">
+                    <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+                  </a>
+                  <a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-surface-bright transition-all" href="#" title="YouTube Music">
+                    <span class="material-symbols-outlined text-[18px]">smart_display</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- =========================================================================
+         INTERACTIVE LOGIC (VANILLA JS MOTOR DE AUDIO HTML5 + CANCIONERO DIGITAL)
+         ========================================================================= -->
+    <script>
+      // Objeto tracksData con las 7 letras reales, especificaciones y rutas locales
+      const tracksData = [
+        {
+          title: "Última Frontera",
+          duration: "02:35",
+          genre: "Cosmic Dance-Rock • El despegue",
+          tag: "TRACK 01 // CAPTAIN MAPLE",
+          specs: "Capítulo I • La chispa que enciende los motores",
+          lyricAuthor: "Captain Maple",
+          audioSrc: "./Ultima frontera.mp3",
+          lyrics: `[Verse 1]
+Voy volando en la Enterprise
+Te veo llegar
+Y es tu esencia tan particular
+Me haces vibrar
+
+[Verse 2]
+No eres de este planeta
+Ni siquiera la galaxia
+Aceleras mis sistemas
+No te puedo dejar de pensar
+
+[Chorus]
+Voy volando la última frontera
+Y ese espacio que nos falta conocer
+Navegando en un mar de estrellas
+Recorriendo cada espacio de tu ser
+
+[Bridge]
+Voy volando...
+Voy volando...
+
+[Chorus]
+Voy volando la última frontera
+Y ese espacio que nos falta conocer
+Navegando en un mar de estrellas
+Recorriendo cada espacio de tu ser
+
+[Outro]
+Voy volando en un mar de estrellas...
+Voy volando en un mar de estrellas...
+Ah... Ah...`,
+          notes: "¿Alguna vez alguien te miró y sentiste que el suelo desaparecía bajo tus pies? Esta canción es ese instante exacto en que una persona que parece de otro planeta se cruza en tu camino, acelera todos tus latidos y te invita a lanzarte sin paracaídas hacia un mar de estrellas que todavía no conoces."
+        },
+        {
+          title: "Tela de Araña",
+          duration: "03:18",
+          genre: "Dark Space Rock • Gravedad nocturna",
+          tag: "TRACK 02 // CAPTAIN MAPLE",
+          specs: "Capítulo II • El vértigo de las dos de la mañana",
+          lyricAuthor: "Captain Maple",
+          audioSrc: "./Tela de araña (1).mp3",
+          lyrics: `[Verse 1]
+Eran las dos, no tenía a dónde ir
+Llegó un mensaje que cambió mi sentir
+Eran palabras que decían qué pasaría esta noche
+Si tú te vienes aquí
+
+[Verse 2]
+Prendí un cigarro y solo sonreí
+Caí en la trampa, no te puedo mentir
+Me fui moviendo, midiendo mi tiempo, despacio
+Y hoy estaba ahí
+
+[Chorus]
+Y solo me dejé
+Llevar por el descontrol de tu cuerpo
+Y no hubo piedad
+Por mis pobres sentimientos, no hubo piedad
+
+[Post-Chorus]
+Caí redondo en tu juego como mosca en tela de araña
+No pude escapar
+Ahora te pienso día y noche, mujer
+Pero tú ya borraste mi amanecer de tu vida
+Y tomarte otra vez
+La solución o mi condena podría ser
+El bello amanecer
+
+[Bridge]
+No me provoques que esta vez
+No seré el mismo de ayer
+
+[Chorus]
+Y solo me dejé
+Llevar por el descontrol de tu cuerpo
+Y no hubo piedad
+Por mis pobres sentimientos, no hubo piedad
+
+[Post-Chorus]
+Caí redondo en tu juego como mosca en tela de araña
+No pude escapar
+Ahora te pienso día y noche, mujer
+Pero tú ya borraste mi amanecer de tus días
+Y tomarte otra vez
+La solución o mi condena podría ser
+El bello amanecer
+
+[Outro]
+No me provoques que esta vez...
+No seré el mismo de ayer.`,
+          notes: "Un mensaje a las dos de la mañana, un cigarro encendido y una trampa en la que eliges caer con los ojos abiertos. Es la historia de esas pasiones magnéticas donde sabes que vas a perder el control, debatiéndote entre si volver a sus brazos será tu salvación o tu condena definitiva."
+        },
+        {
+          title: "Hola, ¿Qué Tal?",
+          duration: "03:53",
+          genre: "Cosmic Rock Ballad • A corazón abierto",
+          tag: "TRACK 03 // CAPTAIN MAPLE",
+          specs: "Capítulo III • La confesión del último romántico",
+          lyricAuthor: "Captain Maple",
+          audioSrc: "./Hola que tal (1).mp3",
+          lyrics: `[Verse 1]
+Yo era el último romántico
+Era el último poeta
+Me entregaba sin condición
+Era el amor de novelas
+De bombones y con las velas
+Todo un romántico de corazón
+
+[Pre-Chorus]
+No te tengo, pero quiero
+Yo llamar tu atención
+Y si hay otros, no pretendo
+Acelerar la situación
+Ya estoy viejo pa' rodeos
+Permíteme tu atención
+Si me dieran un deseo
+Serías... vos
+
+[Chorus]
+¡Escúchame!
+Cuando te explico, escúchame
+Que no eres otra más del montón
+¡Entiéndeme!
+Si te lo grito, escúchame
+Los celos que me abordan cada vez
+
+[Post-Chorus]
+Cuando te escucho suspirar
+Y hasta tus gestos al amar
+No me quiero enamorar
+Pero creo que es tarde ya
+No sé cómo comenzar...
+Hola, ¿qué tal?
+
+[Chorus]
+¡Escúchame!
+Si te lo explico, escúchame
+Que no eres otra más del montón
+¡Entiéndeme!
+Si te lo grito, escúchame
+Los miedos que me abordan cada vez
+
+[Outro]
+Cuando te escucho suspirar
+Y hasta tus gestos al amar
+No me quiero enamorar
+Pero creo que es tarde ya
+No sé cómo comenzar...
+Hola...
+¿Qué tal?`,
+          notes: "Cuando te juras que no te vas a enamorar, pero un solo suspiro suyo desarma todas tus defensas. Es el grito desesperado de quien dejó de creer en los cuentos de hadas, pero descubre que todavía le tiembla la voz y vuelve a sentirse como un principiante que solo atina a decir: 'Hola, ¿qué tal?'."
+        },
+        {
+          title: "Memoria 2",
+          duration: "04:14",
+          genre: "Melancholic Space Rock • La deriva en el vacío",
+          tag: "TRACK 04 // CAPTAIN MAPLE",
+          specs: "Capítulo IV • El eco de lo que dejamos atrás",
+          lyricAuthor: "Captain Maple",
+          audioSrc: "./Memoria 2.mp3",
+          lyrics: `[Verse 1]
+Silencio... tan cósmico
+Flotando al lado de mi nave espacial
+Y el silencio del vacío arrulla mi corazón
+Tengo un frío asesino, ¿alguien me escucha, por favor?
+
+[Pre-Chorus]
+Y pienso en la última vez
+Que tomé un trago después de las diez
+Bésame una y otra vez
+Antes que el silencio me envuelva otra vez
+
+[Chorus]
+¿Hay vida en Venus? Yo lo sé
+Vendrá a buscarme otra vez
+
+[Post-Chorus]
+Puede ser que la única estrella en mi cielo eras tú
+Que tanto he viajado pa' encontrarme a mí
+Y que ahora ya es tarde, solo entiéndelo
+
+[Verse 2]
+Los astros flotan alrededor
+Y hasta parece que conmigo bailarán
+Voy cayendo sin control
+
+[Bridge]
+El silencio del vacío arrulla mi corazón
+Tengo un frío asesino, ¿alguien me escucha, por favor?
+
+[Pre-Chorus]
+Y pienso en la última vez
+Que tomé un trago después de las diez
+Bésame una y otra vez
+Antes que el silencio me envuelva otra vez
+
+[Chorus]
+¿Hay vida en Venus? Yo lo sé
+Vendrá a buscarme otra vez
+¿Hay vida en Venus? Yo lo sé
+Vendrá a buscarme otra vez
+
+[Outro]
+Puede ser que la única estrella en mi cielo eras tú
+Que tanto he viajado pa' encontrarme a mí
+Y que ahora ya es tarde, solo entiéndelo
+
+Puede ser que la única estrella en mi cielo eras tú
+Que tanto he viajado pa' encontrarme a mí
+Y que ahora ya es tarde, solo entiéndelo
+
+Puede ser...
+Puede ser...`,
+          notes: "La noche más fría del viaje. Flotando en el silencio absoluto con los recuerdos de un último trago después de las diez, llega la revelación más dura: a veces viajamos tan lejos buscando encontrarnos a nosotros mismos que, cuando miramos atrás, nos damos cuenta de que dejamos ir a la única estrella que iluminaba nuestro cielo."
+        },
+        {
+          title: "Supernova",
+          duration: "03:45",
+          genre: "Explosive Space Rock • Sin casco en tu órbita",
+          tag: "TRACK 05 // CAPTAIN MAPLE",
+          specs: "Capítulo V • El valor de volver a brillar",
+          lyricAuthor: "Captain Maple",
+          audioSrc: "./Supernova.mp3",
+          lyrics: `[Verse 1]
+A través de las estrellas
+Veo tus ojos pidiéndome entrar
+Una vez más a tu órbita estelar
+
+[Verse 2]
+Me llamas con insistencia
+Y no sé ni cómo respirar
+Sin mi casco en tu órbita estelar
+Ah, yeah, yeah...
+
+[Chorus]
+¡Deja que!
+El tiempo hable, mujer
+¡Deja que!
+El viento sople otra vez
+Deja que los astros nos junten...
+Otra vez...
+Otra vez...
+
+[Verse 3]
+Es el frío que envenena
+Son los miedos que nunca superé
+Y a tu lado puedo brillar otra vez
+Eh-eh-eh...
+
+[Pre-Chorus]
+Tengo miedo de entregarme una vez más
+De enseñarte algo más que a los demás
+Quiero amarte, darme la oportunidad
+Estoy perdido en mi nave espacial
+Y es tu luz la que me guía una vez más
+¡Eres fulgurante a mi alma!
+
+[Chorus]
+¡Deja que!
+El tiempo pase, mujer
+¡Deja que!
+El viento sople otra vez
+Deja que los astros nos junten...
+Eh-eh-eh...
+
+[Outro]
+A través de las estrellas...
+Veo tus ojos pidiéndome entrar
+Una vez más a tu órbita estelar...`,
+          notes: "Aquí nace la imagen que da vida a la portada del álbum. Es el vértigo de quitarte el casco en medio del espacio y sentir que te falta el aire, enfrentando las heridas que nunca superaste para darte una nueva oportunidad de amar. Porque cuando encuentras una luz que es fulgurante para tu alma, vale la pena arriesgarlo todo."
+        },
+        {
+          title: "Mi Marciana",
+          duration: "04:05",
+          genre: "Cosmic Roots Reggae • El aterrizaje en casa",
+          tag: "TRACK 06 // CAPTAIN MAPLE",
+          specs: "Capítulo VI • El rincón del universo que llamamos hogar",
+          lyricAuthor: "Gemini (Idea de Captain Maple)",
+          audioSrc: "./Mi marciana.mp3",
+          lyrics: `[Intro]
+Oh-oh-oh...
+Uoh-oh-oh...
+
+[Verse 1]
+Colgué mi casco al lado de la puerta
+Apagué los motores de mi nave espacial
+Después de tantas lunas y de tantas vueltas
+Llegaste a rescatarme de la gravedad
+
+[Verse 2]
+Ya no soy el astronauta que flotaba herido
+Perdido entre la niebla de otra dimensión
+Crucé la última frontera y vencí al vacío
+El día en que tus ojos me dieron calor
+
+[Verse 3]
+Y caminando juntos por la vía láctea
+Bajamos sin apuro hasta la realidad
+Dos seres de otro mundo que encontraron calma
+Plantando sus raíces frente al vendaval
+
+[Chorus]
+Y aquí me quedo con mi extraterrestre
+En este rincón de tierra que llamamos hogar
+No quiero más estrellas ni viajar a Venus
+Si en tu sonrisa encuentro toda mi verdad
+Hoy tú eres toda la música que necesito
+Mi puerto, mi planeta y mi eternidad
+
+[Chorus]
+Y aquí me quedo con mi extraterrestre
+En este rincón de tierra que llamamos hogar
+Ya no hace frío afuera ni me asusta el tiempo
+Contigo tengo todo, no pido nada más
+Hoy tú eres toda la música que necesito
+Para toda la vida, hasta el final
+
+[Outro]
+Dejé de vagar por el espacio...
+Encontré mi rincón en el universo
+Tú eres toda mi música...
+Mi hogar...`,
+          notes: "El momento en que los motores se apagan y el casco queda colgado al lado de la puerta para siempre. Es una carta de amor al presente: haber dejado de vagar por el espacio para echar raíces junto a esa compañera de vida con la que un pequeño rincón de tierra se convierte en todo el universo que necesitas."
+        },
+        {
+          title: "Ojalá no pare",
+          duration: "02:30",
+          genre: "Latin Space Fiesta • Noche de luna llena",
+          tag: "TRACK 07 // CAPTAIN MAPLE",
+          specs: "Capítulo VII • La celebración de estar vivos",
+          lyricAuthor: "Captain Maple",
+          audioSrc: "./Ojala no pare.mp3",
+          lyrics: `[Verse 1]
+La arena provocando un roce
+Piel morena en el mar yo quiero esta noche
+Si no paras de bailar en mi nave espacial
+Te aseguro que esta noche será solo de goce
+
+[Chorus]
+Nena, sígueme bailando al compás de esta noche que hay luna llena
+Pierde el control de tus sentidos, ven y suelta tus riendas, toquemos estrellas
+Si no paras de bailar en mi nave espacial
+Te aseguro que esta noche será solo de...
+
+[Verse 2]
+Es su piel morena un pecado, es perfecta, lo es
+Un movimiento en su cadera y lo quiero, lo quiero
+Lo quiero todo de ti
+Lo quiero todo, lo quiero todo de ti, yeah
+Lo quiero todo, lo quiero todo...
+
+[Chorus]
+Nena, sígueme bailando al compás de esta noche que hay luna llena
+Pierde el control de tus sentidos, ven y suelta tus riendas, toquemos estrellas
+Si no paras de bailar en mi nave espacial
+Te aseguro que esta noche será solo de...
+
+[Chorus]
+Nena, sígueme bailando al compás de esta noche que hay luna llena
+Pierde el control de tus sentidos, ven y suelta tus riendas, toquemos estrellas
+Si no paras de bailar en mi nave espacial
+Te aseguro que esta noche será solo de...`,
+          notes: "Después de cruzar el frío del espacio y sanar las heridas, llega el momento de celebrar. La nave espacial deja de ser un refugio solitario para convertirse en una fiesta frente al mar bajo la luna llena, cerrando el viaje entre arena, baile, piel morena y la alegría pura de vivir el hoy."
+        }
+      ];
+
+      // Elementos del reproductor
+      const audio = document.getElementById('real-audio-player');
+      const audioPlayer = audio; // Alias audioPlayer para compatibilidad total con servidores y GitHub Pages
+      let currentTrack = 0;
+      let isRepeat = false;
+
+      // Utilidad de formateo de tiempo MM:SS
+      function formatTime(seconds) {
+        if (isNaN(seconds) || seconds < 0) return "00:00";
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+      }
+
+      // Actualizar interfaz del reproductor
+      function updatePlayerUI(index) {
+        const track = tracksData[index];
+        document.getElementById('player-track-index').innerText = `PISTA 0${index + 1} DE 07`;
+        document.getElementById('player-track-title').innerText = track.title;
+        document.getElementById('player-track-genre').innerText = track.genre;
+        document.getElementById('player-time-total').innerText = track.duration;
+
+        // Actualizar filas del tracklist
+        for (let i = 0; i < tracksData.length; i++) {
+          const row = document.getElementById(`track-row-${i}`);
+          if (!row) continue;
+          const idxEl = row.querySelector('.track-index');
+          const pillEl = row.querySelector('.track-play-pill');
+          const iconEl = row.querySelector('.track-play-icon');
+
+          if (i === index) {
+            row.classList.add('bg-surface-container-high/80', 'border-secondary/30');
+            row.classList.remove('bg-surface-container-high/20', 'border-transparent');
+            if (idxEl) {
+              idxEl.classList.add('text-secondary', 'font-bold');
+              idxEl.classList.remove('text-outline');
+            }
+            if (pillEl) {
+              pillEl.classList.add('bg-secondary', 'text-on-secondary');
+              pillEl.classList.remove('bg-surface-container', 'text-on-surface');
+            }
+            if (iconEl) {
+              iconEl.innerText = !audio.paused && audio.currentTime > 0 ? 'pause' : 'play_arrow';
+            }
+          } else {
+            row.classList.remove('bg-surface-container-high/80', 'border-secondary/30');
+            row.classList.add('bg-surface-container-high/20');
+            if (idxEl) {
+              idxEl.classList.remove('text-secondary', 'font-bold');
+              idxEl.classList.add('text-outline');
+            }
+            if (pillEl) {
+              pillEl.classList.remove('bg-secondary', 'text-on-secondary');
+              pillEl.classList.add('bg-surface-container', 'text-on-surface');
+            }
+            if (iconEl) {
+              iconEl.innerText = 'play_arrow';
+            }
+          }
+        }
+
+        // Ícono del botón de play en la portada del Hero
+        const heroIcon = document.getElementById('hero-play-icon');
+        if (heroIcon) {
+          heroIcon.innerText = (!audio.paused && index === 0) ? 'pause' : 'play_arrow';
+        }
+      }
+
+      // Preparar pista en standby sin reproducir automáticamente
+      function prepareTrack(index) {
+        currentTrack = index;
+        const track = tracksData[index];
+        if (track) {
+          audioPlayer.src = encodeURI(track.audioSrc);
+        }
+        audioPlayer.currentTime = 0;
+        document.getElementById('player-time-current').innerText = "00:00";
+        document.getElementById('player-progress').style.width = "0%";
+        const thumb = document.getElementById('player-thumb');
+        if (thumb) thumb.style.left = "0%";
+        updatePlayerUI(index);
+      }
+
+      // Reproducir pista por índice
+      function playTrack(index) {
+        const track = tracksData[index];
+        if (!track) return;
+        if (currentTrack === index && audioPlayer.src) {
+          if (audioPlayer.paused) {
+            audioPlayer.play().catch(e => console.warn("Reproducción pausada o bloqueada por el navegador:", e));
+          } else {
+            audioPlayer.pause();
+          }
+          return;
+        }
+
+        currentTrack = index;
+        audioPlayer.src = encodeURI(track.audioSrc);
+        audioPlayer.play().catch(e => console.warn("Reproducción pausada o bloqueada por el navegador:", e));
+        updatePlayerUI(index);
+        switchTab(index); // Sincroniza automáticamente el Cancionero Digital sin saltar de pantalla
+      }
+
+      // Alternar estado Play/Pause desde el botón central
+      function togglePlayState() {
+        if (!audioPlayer.src || audioPlayer.src === "" || audioPlayer.src.endsWith("/")) {
+          audioPlayer.src = encodeURI(tracksData[currentTrack].audioSrc);
+        }
+        if (audioPlayer.paused) {
+          audioPlayer.play().catch(e => console.warn("Reproducción pausada o bloqueada por el navegador:", e));
+        } else {
+          audioPlayer.pause();
+        }
+      }
+
+      // Play / Pause desde el botón de la portada en Hero
+      function handleCoverPlay() {
+        if (currentTrack === 0) {
+          togglePlayState();
+        } else {
+          playTrack(0);
+        }
+      }
+
+      // Pista siguiente
+      function nextTrack() {
+        currentTrack = (currentTrack + 1) % tracksData.length;
+        audioPlayer.src = encodeURI(tracksData[currentTrack].audioSrc);
+        audioPlayer.play().catch(e => console.warn(e));
+        updatePlayerUI(currentTrack);
+        switchTab(currentTrack);
+      }
+
+      // Pista anterior
+      function prevTrack() {
+        if (audioPlayer.currentTime > 3) {
+          audioPlayer.currentTime = 0;
+          audioPlayer.play().catch(e => console.warn(e));
+          return;
+        }
+        currentTrack = (currentTrack - 1 + tracksData.length) % tracksData.length;
+        audioPlayer.src = encodeURI(tracksData[currentTrack].audioSrc);
+        audioPlayer.play().catch(e => console.warn(e));
+        updatePlayerUI(currentTrack);
+        switchTab(currentTrack);
+      }
+
+      // Alternar repetición cósmica
+      function toggleRepeat() {
+        isRepeat = !isRepeat;
+        const btn = document.getElementById('repeat-btn');
+        if (isRepeat) {
+          btn.classList.add('text-secondary', 'bg-surface-bright', 'shadow-[0_0_12px_rgba(255,185,95,0.4)]');
+          btn.title = "Repetición: Activada";
+        } else {
+          btn.classList.remove('text-secondary', 'bg-surface-bright', 'shadow-[0_0_12px_rgba(255,185,95,0.4)]');
+          btn.title = "Repetición cósmica";
+        }
+      }
+
+      // Búsqueda en la barra de progreso (Seek real)
+      function simulateSeek(event) {
+        const bar = document.getElementById('player-progress-bar') || event.currentTarget;
+        const rect = bar.getBoundingClientRect();
+        const clickX = event.clientX - rect.left;
+        const percent = Math.min(Math.max(clickX / rect.width, 0), 1);
+        if (audio && audio.duration && !isNaN(audio.duration)) {
+          audio.currentTime = percent * audio.duration;
+        } else {
+          document.getElementById('player-progress').style.width = (percent * 100) + '%';
+          const thumb = document.getElementById('player-thumb');
+          if (thumb) thumb.style.left = (percent * 100) + '%';
+        }
+      }
+
+      // Eventos de HTML5 Audio
+      audio.addEventListener('play', () => {
+        document.getElementById('main-play-icon').innerText = 'pause';
+        const heroIcon = document.getElementById('hero-play-icon');
+        if (heroIcon && currentTrack === 0) heroIcon.innerText = 'pause';
+        
+        // Ícono de fila activa
+        const activeRow = document.getElementById(`track-row-${currentTrack}`);
+        if (activeRow) {
+          const iconEl = activeRow.querySelector('.track-play-icon');
+          if (iconEl) iconEl.innerText = 'pause';
+        }
+
+        // Pausar video de YouTube si estuviera reproduciéndose
+        const ytIframe = document.querySelector('#teaser iframe');
+        if (ytIframe && ytIframe.contentWindow) {
+          try {
+            ytIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+          } catch(e) {}
+        }
+      });
+
+      audio.addEventListener('pause', () => {
+        document.getElementById('main-play-icon').innerText = 'play_arrow';
+        const heroIcon = document.getElementById('hero-play-icon');
+        if (heroIcon) heroIcon.innerText = 'play_arrow';
+
+        // Restablecer íconos de filas
+        for (let i = 0; i < tracksData.length; i++) {
+          const row = document.getElementById(`track-row-${i}`);
+          if (row) {
+            const iconEl = row.querySelector('.track-play-icon');
+            if (iconEl) iconEl.innerText = 'play_arrow';
+          }
+        }
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        document.getElementById('player-time-current').innerText = formatTime(audio.currentTime);
+        if (audio.duration && !isNaN(audio.duration) && audio.duration > 0) {
+          document.getElementById('player-time-total').innerText = formatTime(audio.duration);
+          const pct = (audio.currentTime / audio.duration) * 100;
+          document.getElementById('player-progress').style.width = pct + '%';
+          const thumb = document.getElementById('player-thumb');
+          if (thumb) thumb.style.left = pct + '%';
+        }
+      });
+
+      audio.addEventListener('loadedmetadata', () => {
+        if (audio.duration && !isNaN(audio.duration) && audio.duration > 0) {
+          document.getElementById('player-time-total').innerText = formatTime(audio.duration);
+        }
+      });
+
+      audio.addEventListener('ended', () => {
+        if (isRepeat) {
+          audio.currentTime = 0;
+          audio.play().catch(e => console.warn(e));
+        } else {
+          nextTrack();
+        }
+      });
+
+      // Cancionero Digital Tabs
+      function switchTab(index) {
+        const track = tracksData[index];
+        if (!track) return;
+        document.getElementById('sheet-track-tag').innerText = track.tag;
+        document.getElementById('sheet-track-title').innerText = track.title;
+        document.getElementById('sheet-track-subtitle').innerText = track.specs;
+        document.getElementById('sheet-lyrics-content').innerText = track.lyrics;
+        document.getElementById('sheet-notes-content').innerText = `"${track.notes}"`;
+        document.getElementById('sheet-lyric-author').innerText = track.lyricAuthor;
+
+        // Actualizar pestañas horizontales
+        const tabs = document.querySelectorAll('.tab-btn');
+        tabs.forEach((tab, i) => {
+          if (i === index) {
+            tab.className = "tab-btn px-4 py-2 rounded-full font-label-caps text-label-caps uppercase tracking-widest transition-all shrink-0 bg-secondary text-on-secondary font-bold shadow-[0_0_15px_rgba(255,185,95,0.4)]";
+          } else {
+            tab.className = "tab-btn px-4 py-2 rounded-full font-label-caps text-label-caps uppercase tracking-widest transition-all shrink-0 bg-surface-container text-on-surface-variant hover:text-on-surface";
+          }
+        });
+      }
+
+      // Ver letra y desplazarse suavemente
+      function showLyricsForTrack(index) {
+        switchTab(index);
+        const cancioneroSection = document.getElementById('cancionero');
+        if (cancioneroSection) {
+          cancioneroSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+
+      // Descarga directa del booklet deluxe
+      function triggerBookletDownload() {
+        const link = document.createElement('a');
+        link.href = './Cancionero_Descompresion_Deluxe.pdf';
+        link.download = 'Cancionero_Descompresion_Deluxe.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      // Clases activas e inactivas para el menú superior
+      const ACTIVE_NAV_CLASS = "px-space-md py-space-xs rounded-full font-label-caps text-label-caps uppercase transition-all bg-surface-container-high text-on-surface font-medium";
+      const INACTIVE_NAV_CLASS = "px-space-md py-space-xs rounded-full font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/50 transition-all";
+
+      // Activar recuadro en el menú superior
+      function setActiveNav(targetHref) {
+        const navLinks = document.querySelectorAll('header nav a');
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === targetHref) {
+            link.className = ACTIVE_NAV_CLASS;
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.className = INACTIVE_NAV_CLASS;
+            link.removeAttribute('aria-current');
+          }
+        });
+      }
+
+      // Scroll Spy con IntersectionObserver para sincronizar menú al hacer scroll
+      function initScrollSpy() {
+        const sectionIds = ['hero', 'concepto', 'tracklist', 'cancionero', 'teaser'];
+        const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+        const navLinks = document.querySelectorAll('header nav a');
+
+        let isManualClick = false;
+        let manualTimeout = null;
+
+        navLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            const href = this.getAttribute('href');
+            setActiveNav(href);
+            isManualClick = true;
+            clearTimeout(manualTimeout);
+            manualTimeout = setTimeout(() => {
+              isManualClick = false;
+            }, 900);
+          });
+        });
+
+        const observerOptions = {
+          root: null,
+          rootMargin: "-25% 0px -45% 0px",
+          threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          if (isManualClick) return;
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              setActiveNav('#' + entry.target.id);
+            }
+          });
+        }, observerOptions);
+
+        sections.forEach(sec => observer.observe(sec));
+
+        // Detección de extremos (tope superior y fondo de página)
+        window.addEventListener('scroll', () => {
+          if (isManualClick) return;
+          if (window.scrollY < 100) {
+            setActiveNav('#hero');
+          } else if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 60) {
+            setActiveNav('#teaser');
+          }
+        }, { passive: true });
+      }
+
+      // Manejo del formulario de newsletter
+      function handleNewsletterSubmit(e) {
+        e.preventDefault();
+        const email = document.getElementById('newsletter-email').value;
+        alert(`Frecuencia registrada con éxito para: ${email}. Bienvenido al Cuaderno de Bitácora.`);
+        document.getElementById('newsletter-email').value = '';
+      }
+
+      // Inicialización al cargar la página
+      window.addEventListener('DOMContentLoaded', () => {
+        prepareTrack(0);
+        switchTab(0);
+        initScrollSpy();
+
+        // Pausar audio MP3 si el usuario interactúa con la sección #teaser o da Play al video de YouTube
+        function pauseAudioOnVideoAction() {
+          if (audioPlayer && !audioPlayer.paused) {
+            audioPlayer.pause();
+          }
+        }
+
+        const teaserSection = document.getElementById('teaser');
+        if (teaserSection) {
+          teaserSection.addEventListener('pointerdown', pauseAudioOnVideoAction);
+          teaserSection.addEventListener('click', pauseAudioOnVideoAction);
+        }
+
+        // Detectar clic dentro del iframe de YouTube (al perder el foco de la ventana hacia el iframe)
+        window.addEventListener('blur', () => {
+          if (document.activeElement && document.activeElement.tagName === 'IFRAME') {
+            pauseAudioOnVideoAction();
+          }
+        });
+
+        // Escuchar eventos de la API de YouTube IFrame
+        window.addEventListener('message', (event) => {
+          try {
+            const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+            if (data && (data.event === 'onStateChange' && data.info === 1)) {
+              pauseAudioOnVideoAction();
+            }
+          } catch (e) {}
+        });
+      });
+    </script>
+  </main>
+
+  <footer class="w-full bg-surface-container-lowest text-on-surface-variant border-t border-surface-container-high/40">
+    <div class="w-full px-gutter-mobile lg:px-margin py-space-xl flex flex-col gap-space-xl">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-space-lg items-start">
+        <div class="md:col-span-5 flex flex-col gap-space-sm">
+          <div class="flex items-center gap-space-xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            <span class="font-label-caps text-label-caps uppercase tracking-[0.25em] text-on-surface">CAPTAIN MAPLE SOUNDWORKS</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant max-w-md leading-relaxed">
+            'Descompresión' es una travesía sónica cósmica concebida en los confines del silencio. Una colisión entre texturas espaciales analógicas, soplos orquestales y paisajes sintéticos en desaceleración.
+          </p>
+          <div class="flex items-center gap-space-xs mt-space-xs">
+            <span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-caps text-label-caps uppercase border border-primary/20">DOLBY ATMOS</span>
+            <span class="px-2 py-0.5 rounded-full bg-surface-container-high text-secondary font-label-caps text-label-caps uppercase border border-secondary/20">LOSSLESS 24-BIT</span>
+            <span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps uppercase border border-outline-variant/30">SUNO V6 MASTER</span>
+          </div>
+        </div>
+        <div class="md:col-span-4 flex flex-col gap-space-sm">
+          <span class="font-label-caps text-label-caps uppercase tracking-[0.2em] text-on-surface">TRANSMISIÓN &amp; STREAMING</span>
+          <div class="flex flex-wrap gap-x-space-md gap-y-space-xs">
+            <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-secondary transition-colors" href="#">Spotify</a>
+            <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-secondary transition-colors" href="#">Apple Music</a>
+            <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-secondary transition-colors" href="#">YouTube</a>
+            <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-secondary transition-colors" href="#">Bandcamp</a>
+            <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-secondary transition-colors" href="https://suno.com">Suno AI</a>
+          </div>
+        </div>
+        <div class="md:col-span-3 flex flex-col gap-space-sm">
+          <span class="font-label-caps text-label-caps uppercase tracking-[0.2em] text-on-surface">FICHA TÉCNICA</span>
+          <p class="font-body-sm text-body-sm text-on-surface-variant/80 leading-relaxed">
+            Producción, mezclas y arte original bajo el sello independiente Void Pulse Records. Co-creación y modelado auditivo mediante síntesis generativa Suno v6 y curaduría humana de Captain Maple.
+          </p>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-md border-t border-surface-container-high/30">
+        <p class="font-label-mono text-label-mono text-outline">© 2026 Captain Maple. Todos los derechos reservados. Edición Fonográfica No. CM-26-VOID.</p>
+        <p class="font-label-caps text-label-caps uppercase text-outline tracking-[0.18em]">PRODUCCIÓN HÍBRIDA HUMANO + IA • EDICIÓN INDEPENDIENTE</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
